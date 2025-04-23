@@ -1,0 +1,17 @@
+Package: TimeCourseVectors
+Type: Package
+Title: TimeCourseVectors
+Version: 1.0.0
+Date: 2025-04-23
+Author: Paul Shannon
+Maintainer: Paul Shannon <paul.thurmond.shannon@gmail.com>
+Depends: R (>= 4.1.0), R6, GenomicRanges, MotifDb (>= 1.49.3)
+Suggests: RUnit, knitr, rmarkdown
+Description: an R6 class to transform rna and open chromatin into timecourse vectors
+License: MIT
+LazyLoad: yes
+NeedsCompilation: no
+VignetteBuilder:
+  knitr
+Encoding: UTF-8
+RoxygenNote: 7.3.2
