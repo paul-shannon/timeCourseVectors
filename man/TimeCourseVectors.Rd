@@ -14,6 +14,13 @@ An R6 class to transform experimental matrix data into timecourse vectors.
 \itemize{
 \item \href{#method-TimeCourseVectors-new}{\code{TimeCourseVectors$new()}}
 \item \href{#method-TimeCourseVectors-getScoreColumn}{\code{TimeCourseVectors$getScoreColumn()}}
+\item \href{#method-TimeCourseVectors-getTable}{\code{TimeCourseVectors$getTable()}}
+\item \href{#method-TimeCourseVectors-findRegionFamilies}{\code{TimeCourseVectors$findRegionFamilies()}}
+\item \href{#method-TimeCourseVectors-getOverlaps}{\code{TimeCourseVectors$getOverlaps()}}
+\item \href{#method-TimeCourseVectors-getFamilySizes}{\code{TimeCourseVectors$getFamilySizes()}}
+\item \href{#method-TimeCourseVectors-getParents}{\code{TimeCourseVectors$getParents()}}
+\item \href{#method-TimeCourseVectors-displayFamilies}{\code{TimeCourseVectors$displayFamilies()}}
+\item \href{#method-TimeCourseVectors-displayByDay}{\code{TimeCourseVectors$displayByDay()}}
 \item \href{#method-TimeCourseVectors-clone}{\code{TimeCourseVectors$clone()}}
 }
 }
@@ -43,13 +50,114 @@ a new instance of TimeCourseVectors
 \if{html}{\out{<a id="method-TimeCourseVectors-getScoreColumn"></a>}}
 \if{latex}{\out{\hypertarget{method-TimeCourseVectors-getScoreColumn}{}}}
 \subsection{Method \code{getScoreColumn()}}{
-accessor for the object's id field
+accessor for the object's scoreColumn field
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$getScoreColumn()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
 the current value of the id member
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-getTable"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-getTable}{}}}
+\subsection{Method \code{getTable()}}{
+accessor for the object's data.frame
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$getTable()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+current base table of genomic regions
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-findRegionFamilies"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-findRegionFamilies}{}}}
+\subsection{Method \code{findRegionFamilies()}}{
+find location-sharing genomic regions, 
+each of which we regard as a family of regions, with
+the specified minimum overlap.  singleton families are
+included.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$findRegionFamilies(minOverlap = 20)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{miniOverlap}}{integer, the number of shared bases}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+the current value of the id member
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-getOverlaps"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-getOverlaps}{}}}
+\subsection{Method \code{getOverlaps()}}{
+accessor for the object's GRanges overlap
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$getOverlaps()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+the overlap table as a data.frame
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-getFamilySizes"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-getFamilySizes}{}}}
+\subsection{Method \code{getFamilySizes()}}{
+accessor for the object's GRanges overlap
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$getFamilySizes()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+the overlap table as a data.frame
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-getParents"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-getParents}{}}}
+\subsection{Method \code{getParents()}}{
+accessor for the parents of all the grouped regions
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$getParents()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+the parents, a list
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-displayFamilies"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-displayFamilies}{}}}
+\subsection{Method \code{displayFamilies()}}{
+accessor for the parents of all the grouped regions
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$displayFamilies()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+the parents, a list
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-TimeCourseVectors-displayByDay"></a>}}
+\if{latex}{\out{\hypertarget{method-TimeCourseVectors-displayByDay}{}}}
+\subsection{Method \code{displayByDay()}}{
+use igv to display tracks, consolidated by day
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{TimeCourseVectors$displayByDay()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+nothing
 }
 }
 \if{html}{\out{<hr>}}

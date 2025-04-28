@@ -1,10 +1,6 @@
-git add LICENSE
-git add README.md
-git add DESCRIPTION
-git add NAMESPACE
-git add R/
-git add inst/
-git add junk
-git add makefile
-git add man/
-
+git add  NAMESPACE
+git add  R/TimeCourseVectors.R
+git add  inst/unitTests/test_TimeCourseVectors.R
+git add  junk
+git add  man/TimeCourseVectors.Rd
+git add	inst/extdata/klf1-atac-200k.RData
