@@ -20,6 +20,7 @@ TimeCourseVectors = R6Class("TimeCourseVectors",
 
     #--------------------------------------------------------------------------------
     private = list(tbl=data.frame(),
+                   tbl.collapsed=data.frame(),
                    scoreColumn=NULL,
                    tbl.ov=data.frame(),
                    xtab=NULL,
@@ -129,14 +130,48 @@ TimeCourseVectors = R6Class("TimeCourseVectors",
             rows <- unlist(private$families[which])
             maxVal <- 1.1 * max(tbl[, private$scoreColumn])
             tbl.fam <- private$tbl[rows,]
+            new.order <- order(tbl.fam$day, tbl.fam$rep)
+            tbl.fam <- tbl.fam[new.order,]
             for(i in seq_len(nrow(tbl.fam))){
-               trackName <- sprintf("%d-%d-%d-%d", i, tbl$day[i], tbl$rep[i], which)
+               trackName <- sprintf("%d  day: %d rep: %d fam: %d", i, tbl.fam$day[i], tbl.fam$rep[i], which)
                tbl.track <- tbl.fam[i, c("chrom", "start", "end", private$scoreColumn)]
                track <- DataFrameQuantitativeTrack(trackName, tbl.track,
                                         color="black", autoscale=FALSE, min=0, max=maxVal)
                displayTrack(igv, track)
                } # for i
             }, # displayFamilies
+
+        #------------------------------------------------------------
+        #' @description average the reps in each day in private$tbl,
+        #' @return nothing
+        collapseToDay = function(family){
+            rows <- unlist(private$families[family])
+            x <- private$tbl[rows,]
+            days <- sort(unique(x$day))
+            x$size <- with(x, 1+end-start)
+            x$score <- x$size * x$pvalScore
+            gr.region <- reduce(GRanges(x))
+            day.scores <- c()
+            for(Day in days){
+               mean.score  <- mean(subset(x, day==Day)$score)
+               day.scores <- append(day.scores, mean.score)
+               } # for Day
+            tbl <- data.frame(day=days, score=day.scores)
+            return(tbl)
+            }, # collapsetoDay
+
+        #------------------------------------------------------------
+        #' @description average the reps in each day in private$tbl,
+        #' @return nothing
+        inferToTimePoints = function(family, days){
+            printf("")
+            printf("---- TCV.inferToTimePoints")
+            printf("")
+            tbl.fam <- self$collapseToDay(family)
+            browser()
+            xyz <- 99
+            }, # collapsetoDay
+
 
         #------------------------------------------------------------
         #' @description use igv to display tracks, consolidated by day
